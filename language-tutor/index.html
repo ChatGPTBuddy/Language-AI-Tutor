@@ -5,84 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Tutor</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 p-6">
-    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
-        <h1 class="text-2xl font-bold mb-6">Language Tutor</h1>
-        
-        <!-- Language Selection -->
-        <div class="grid grid-cols-2 gap-4 mb-6">
-            <div>
-                <label class="block text-sm font-medium mb-2">Native Language</label>
-                <select id="nativeLanguageSelect" class="w-full p-2 border rounded">
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="it">Italian</option>
-                    <option value="pt">Portuguese</option>
-                    <option value="ja">Japanese</option>
-                    <option value="zh">Mandarin</option>
-                    <option value="nl">Dutch</option>
-                </select>
+<body class="bg-gray-100 min-h-screen transition-colors">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-xl font-bold text-gray-800">Language Tutor</h1>
+                <div class="theme-toggle" id="themeToggle"></div>
             </div>
-            <div>
-                <label class="block text-sm font-medium mb-2">Target Language</label>
-                <select id="targetLanguageSelect" class="w-full p-2 border rounded">
-                    <option value="es">Spanish</option>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="it">Italian</option>
-                    <option value="pt">Portuguese</option>
-                    <option value="ja">Japanese</option>
-                    <option value="zh">Mandarin</option>
-                    <option value="nl">Dutch</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Difficulty Selection -->
-        <div class="mb-6">
-            <label class="block text-sm font-medium mb-2">Difficulty Level</label>
-            <select id="difficultySelect" class="w-full p-2 border rounded">
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-            </select>
-        </div>
-
-        <!-- Control Buttons -->
-        <div class="flex gap-4 mb-6">
-            <button id="startButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                Start Conversation
-            </button>
-            <button id="speakButton" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 hidden">
-                🎤 Speak
-            </button>
-            <button id="replayButton" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 hidden">
-                🔊 Replay
-            </button>
-        </div>
-
-        <!-- Conversation Area -->
-        <div id="conversation" class="h-96 overflow-y-auto border rounded p-4 mb-4">
-            <p class="text-gray-500 text-center">Click "Start Conversation" to begin...</p>
-        </div>
-
-        <!-- User Input Area -->
-        <div id="userInputArea" class="mb-4 hidden">
-            <div class="flex gap-2">
-                <input type="text" id="userInput" class="flex-1 p-2 border rounded" placeholder="Type your response...">
-                <button id="sendButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    Send
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-gray-800" title="View History">
+                    <i class="fas fa-history"></i>
+                </button>
+                <button class="text-gray-600 hover:text-gray-800" title="Settings">
+                    <i class="fas fa-cog"></i>
                 </button>
             </div>
         </div>
+    </nav>
 
-        <!-- Debug Area -->
-        <div id="debug" class="bg-gray-100 p-4 rounded text-sm hidden"></div>
-    </div>
+    <main class="max-w-4xl mx-auto p-6">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <!-- Language Selection -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">Native Language</label>
+                    <div class="relative">
+                        <select id="nativeLanguageSelect" class="w-full pl-10 pr-4 py-2 border rounded-lg appearance-none bg-white">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ja">Japanese</option>
+                            <option value="zh">Mandarin</option>
+                            <option value="nl">Dutch</option>
+                        </select>
+                        <i class="fas fa-globe absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">Target Language</label>
+                    <div class="relative">
+                        <select id="targetLanguageSelect" class="w-full pl-10 pr-4 py-2 border rounded-lg appearance-none bg-white">
+                            <option value="es">Spanish</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ja">Japanese</option>
+                            <option value="zh">Mandarin</option>
+                            <option value="nl">Dutch</option>
+                        </select>
+                        <i class="fas fa-language absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Difficulty Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Difficulty Level</label>
+                <div class="relative">
+                    <select id="difficultySelect" class="w-full pl-10 pr-4 py-2 border rounded-lg appearance-none bg-white">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <i class="fas fa-chart-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="flex flex-wrap gap-4 mb-6">
+                <button id="startButton" class="btn bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-blue-700 flex items-center space-x-2">
+                    <i class="fas fa-play"></i>
+                    <span>Start Conversation</span>
+                </button>
+                <button id="stopButton" class="btn bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2 rounded-lg hover:from-red-600 hover:to-red-700 hidden flex items-center space-x-2">
+                    <i class="fas fa-stop"></i>
+                    <span>Stop</span>
+                </button>
+                <button id="resetButton" class="btn bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-2 rounded-lg hover:from-gray-600 hover:to-gray-700 hidden flex items-center space-x-2">
+                    <i class="fas fa-redo"></i>
+                    <span>Reset</span>
+                </button>
+                <button id="speakButton" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="replayButton" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors hidden">
+                    <i class="fas fa-play"></i>
+                </button>
+            </div>
+
+            <!-- Conversation Area -->
+            <div id="conversation" class="h-96 overflow-y-auto border rounded-lg p-4 mb-4 space-y-4">
+                <div class="flex justify-center items-center h-full text-gray-500">
+                    <div class="text-center">
+                        <i class="fas fa-comments text-4xl mb-2"></i>
+                        <p>Click "Start Conversation" to begin...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Input Area -->
+            <div id="userInputArea" class="hidden">
+                <div class="flex items-center gap-2">
+                    <div class="relative flex-1">
+                        <input type="text" id="userInput" class="w-full pl-4 pr-10 py-3 border rounded-lg" placeholder="Type your message...">
+                        <button id="emojiButton" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                            <i class="far fa-smile"></i>
+                        </button>
+                    </div>
+                    <button id="sendButton" class="btn bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-blue-700">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-medium text-gray-700 mb-4">Session Progress</h3>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+            <div class="flex justify-between text-sm text-gray-500 mt-2">
+                <span>0 messages</span>
+                <span>Session time: 0:00</span>
+            </div>
+        </div>
+    </main>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
