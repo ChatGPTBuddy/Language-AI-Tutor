@@ -21,6 +21,8 @@
     "websocket": "^1.0.35"
   },
   "dependencies": {
+    "express": "^4.21.1",
+    "node-fetch": "^3.3.2",
     "ws": "^8.18.0"
   }
 }

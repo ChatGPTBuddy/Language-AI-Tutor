@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6">Language Tutor</h1>
+        
+        <!-- Language Selection -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+                <label class="block text-sm font-medium mb-2">Native Language</label>
+                <select id="nativeLanguageSelect" class="w-full p-2 border rounded">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Mandarin</option>
+                    <option value="nl">Dutch</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-2">Target Language</label>
+                <select id="targetLanguageSelect" class="w-full p-2 border rounded">
+                    <option value="es">Spanish</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Mandarin</option>
+                    <option value="nl">Dutch</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Difficulty Selection -->
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Difficulty Level</label>
+            <select id="difficultySelect" class="w-full p-2 border rounded">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="flex gap-4 mb-6">
+            <button id="startButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Start Conversation
+            </button>
+            <button id="speakButton" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 hidden">
+                🎤 Speak
+            </button>
+            <button id="replayButton" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 hidden">
+                🔊 Replay
+            </button>
+        </div>
+
+        <!-- Conversation Area -->
+        <div id="conversation" class="h-96 overflow-y-auto border rounded p-4 mb-4">
+            <p class="text-gray-500 text-center">Click "Start Conversation" to begin...</p>
+        </div>
+
+        <!-- User Input Area -->
+        <div id="userInputArea" class="mb-4 hidden">
+            <div class="flex gap-2">
+                <input type="text" id="userInput" class="flex-1 p-2 border rounded" placeholder="Type your response...">
+                <button id="sendButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Send
+                </button>
+            </div>
+        </div>
+
+        <!-- Debug Area -->
+        <div id="debug" class="bg-gray-100 p-4 rounded text-sm hidden"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
